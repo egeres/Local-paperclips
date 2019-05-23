@@ -9,22 +9,23 @@
 
 // Cosas generales
 paperclips       = 0;
-euros            = 10;
+euros            = 10000;
 
 // Ventas
 paperclips_stock = 0;
 paperclip_price  = 1;
+marketing        = 1;
 
 // Cosas de la fábrica
 wire                    = 90;
 wire_price              = 1.2;
 autoclippers            = 0;
-autoclippers_efficiency = 1; // Clips por segundo que generan
+autoclippers_efficiency = 1; // Wire consumido para hacer un clip
 autoclippers_price      = 100; // Precio
 
 
 
-
+// La ui en sí
 var ui_element_ammount_paperclips;
 var ui_element_available_funds;
 var ui_element_unsold_inventory;
@@ -33,6 +34,18 @@ var ui_element_ammount_wire;
 var ui_element_ammount_autoclippers;
 var ui_element_price_wire;
 var ui_element_price_autoclippers;
+
+var ui_element_average_clips;
+
+
+
+
+
+
+
+
+
+
 
 // Bucle principal, más o menos
 setTimeout( function(){
@@ -47,9 +60,10 @@ setTimeout( function(){
     ui_element_ammount_autoclippers = document.getElementById('ammount-autoclippers');
     ui_element_price_autoclippers   = document.getElementById('cost-autoclippers');
 
+    ui_element_average_clips        = document.getElementById('paperclip-average');
+
     setInterval(function() { update_ui(); }, 50);
 }, 100);
-
 
 // Se actualiza cada medio segundo
 setTimeout( function(){ setInterval(function() {
@@ -64,18 +78,30 @@ setTimeout( function(){ setInterval(function() {
 // Se actualiza cada segundo
 setTimeout( function(){ setInterval(function() {
 
-        paperclips_stock += autoclippers * autoclippers_efficiency;
-        paperclips       += autoclippers * autoclippers_efficiency;
+        // Autoclippers !
+        if (wire >= autoclippers_efficiency && autoclippers > 0)
+        {
+            wire -= autoclippers * autoclippers_efficiency;
+            wire = Math.round( wire * 10 ) / 10;
 
-        // if (paperclips_stock > 0) { paperclips_stock--; euros += paperclip_price; }
-        // euros = Math.round( euros * 10 ) / 10;
+            paperclips_stock += autoclippers * autoclippers_efficiency;
+            paperclips       += autoclippers * autoclippers_efficiency;
+            paperclips_stock = Math.round( paperclips_stock * 10 ) / 10;
+            paperclips       = Math.round( paperclips * 10 ) / 10;
+        }
 
 }, 1000); }, 130);
 
+
+
+
+// Funciones de compra
 function buy_autoclipper() {
     if (euros >= autoclippers_price) {
         autoclippers++;
         euros -= autoclippers_price;
+        euros = Math.round( euros * 10 ) / 10;
+        autoclippers_price = price_linear(autoclippers, 100, 50);
     }
     // factory_autoclippers
 }
@@ -84,10 +110,21 @@ function buy_wire() {
     if (euros >= wire_price) {
         wire++;
         euros -= wire_price;
+        euros = Math.round( euros * 10 ) / 10;
     }
     // factory_autoclippers
 }
 
+function buy_upgrade(price, upgrade_function) {
+    if (euros >= price) {
+        euros -= price;
+        upgrade_function();
+        // this.parentNode.removeChild(this);
+    }
+}
+
+
+// Otros
 function increment_by_one() {
     paperclips++;
     paperclips_stock++;
@@ -103,6 +140,19 @@ function paperclip_price_lower() {
     paperclip_price = Math.round( paperclip_price * 10 ) / 10; // Sí, es necesario
 }
 
+
+
+// Mejoras así a desbloquear
+function autoclippers_increase_efficiency(ammount) {
+    autoclippers_efficiency -= ammount;
+}
+
+
+// Gestión en sí
+function price_linear(ammount, initial_price, increment) {
+    return ammount * increment + initial_price;
+}
+
 function update_ui() {
 
     // if (paperclips_stock > 0) { paperclips_stock--; euros += paperclip_price; }
@@ -115,4 +165,6 @@ function update_ui() {
     ui_element_price_wire.innerHTML           = "Price : " + wire_price;
     ui_element_ammount_autoclippers.innerHTML = "Autoclippers : " + autoclippers;
     ui_element_price_autoclippers.innerHTML   = "Price : " + autoclippers_price + "€";
+
+    ui_element_average_clips                  = "Average clips : " + autoclippers;
 }

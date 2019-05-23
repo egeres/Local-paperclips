@@ -13,11 +13,13 @@
             .column {
                 width: 320px;
                 float: left;
+                margin-right: 5px;
             }
             .project {
                 background-color: #a7a7a7;
                 padding: 20px;
                 text-align: center;
+                margin-top: 5px;
             }
         </style>
         <script type="text/javascript" src="game.js">
@@ -37,12 +39,12 @@
             <hr>
             <span id="available-funds">Available funds</span> <br>
             <!-- Available funds <br> -->
-            Average clips <br>
+            <span id="paperclip-average">Average clips</span> <br>
+            <!-- Average clips <br> -->
             <span id="unsold-inventory">Unsold inventory : 0</span> <br>
             <button type="button" onclick="paperclip_price_increase()">Raise price</button>
             <button type="button" onclick="paperclip_price_lower()">Lower price</button>
             <span id="paperclip-price">Paperclip price</span> <br>
-            <!-- Price per clip<br> -->
             Public demand : 100% <br>
             <br>
             <button type="button" name="button">Marketing</button>
@@ -86,10 +88,37 @@
 
             <h2>Projects</h2>
             <hr>
-            <div class="project">
+            <!-- <div class="project" onclick="buy_upgrade(100, function() {console.log('aa');}); this.parentNode.removeChild(this);"> -->
+            <!-- <div class="project" onclick="this.parentNode.removeChild(this);"> -->
+            <div class="project" onclick="buy_upgrade(100, function() {autoclippers_increase_efficiency(0.1)});     this.parentNode.removeChild(this);">
                 <!-- Asdadsasd : 9999 -->
-                <b>Asdadsasd</b> Cose : 999$
+                <b>Increase autoclippers efficiency by 0.1</b> Cose : 100$
             </div>
+
+
+            <div class="project" onclick="buy_upgrade(100, function() {autoclippers_increase_efficiency(0.1)});     this.parentNode.removeChild(this);">
+                <b>Increase autoclippers efficiency by 0.1</b> Cose : 100$
+            </div>
+
+            <div class="project" onclick="buy_upgrade(100, function() {autoclippers_increase_efficiency(0.1)});     this.parentNode.removeChild(this);">
+                <b>Increase autoclippers efficiency by 0.1</b> Cose : 100$
+            </div>
+
+            <div class="project" onclick="buy_upgrade(100, function() {autoclippers_increase_efficiency(0.1)});     this.parentNode.removeChild(this);">
+                <b>Increase autoclippers efficiency by 0.1</b> Cose : 100$
+            </div>
+
+            <div class="project" onclick="buy_upgrade(100, function() {autoclippers_increase_efficiency(0.1)});     this.parentNode.removeChild(this);">
+                <b>Increase autoclippers efficiency by 0.1</b> Cose : 100$
+            </div>
+
+            <div class="project" onclick="buy_upgrade(100, function() {autoclippers_increase_efficiency(0.1)});     this.parentNode.removeChild(this);">
+                <b>Increase autoclippers efficiency by 0.1</b> Cose : 100$
+            </div>
+
+
+
+
         </div>
     </body>
 </html>
