@@ -39,8 +39,8 @@
             <!-- Available funds <br> -->
             Average clips <br>
             <span id="unsold-inventory">Unsold inventory : 0</span> <br>
-            <button id="button-paperclip-price-rise" type="button" onclick="paperclip_price_increase()">Raise price</button>
-            <button id="button-paperclip-price-lower"type="button" onclick="paperclip_price_lower()">Lower price</button>
+            <button type="button" onclick="paperclip_price_increase()">Raise price</button>
+            <button type="button" onclick="paperclip_price_lower()">Lower price</button>
             <span id="paperclip-price">Paperclip price</span> <br>
             <!-- Price per clip<br> -->
             Public demand : 100% <br>
@@ -57,14 +57,18 @@
             Clips per second : 999 <br>
 
             <br>
-            <button type="button" name="button">Wire</button>
-            99999 cm <br>
-            Cost : 9999 <br>
+            <button type="button" onclick="buy_wire()">Wire</button>
+            <span id="ammount-wire">100 m</span> <br>
+            <span id="cost-wire">3 €</span> <br>
+            <!-- 99999 cm <br> -->
+            <!-- Cost : 9999 <br> -->
             <br>
 
-            <button type="button" name="button">Autoclipers</button>
-            99999 cm <br>
-            Cost : 9999 <br>
+            <button type="button" onclick="buy_autoclipper()">Autoclipers</button>
+            <!-- 99999 cm <br>
+            Cost : 9999 <br> -->
+            <span id="ammount-autoclippers">4</span> <br>
+            <span id="cost-autoclippers">3 €</span> <br>
 
         </div>
         <div class="column">
