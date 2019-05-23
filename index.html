@@ -11,7 +11,7 @@
                 margin-bottom: 0px;
             }
             .column {
-                width: 300px;
+                width: 320px;
                 float: left;
             }
             .project {
@@ -31,16 +31,18 @@
 
         <div class="column">
             <!-- <h1>Paperclips : 9999</h1> -->
-            <button type="button" name="button" onclick="increment()">Make paperclip</button>
+            <button type="button" name="button" onclick="increment_by_one()">Make paperclip</button>
 
             <h2>Business</h2>
             <hr>
-            Available funds <br>
+            <span id="available-funds">Available funds</span> <br>
+            <!-- Available funds <br> -->
             Average clips <br>
-
-            <button type="button" name="button">Raise price</button>
-            <button type="button" name="button">Lower price</button>
-            Price per clip<br>
+            <span id="unsold-inventory">Unsold inventory : 0</span> <br>
+            <button id="button-paperclip-price-rise" type="button" onclick="paperclip_price_increase()">Raise price</button>
+            <button id="button-paperclip-price-lower"type="button" onclick="paperclip_price_lower()">Lower price</button>
+            <span id="paperclip-price">Paperclip price</span> <br>
+            <!-- Price per clip<br> -->
             Public demand : 100% <br>
             <br>
             <button type="button" name="button">Marketing</button>
