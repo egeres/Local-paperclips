@@ -15,6 +15,7 @@ euros            = 10000;
 paperclips_stock = 0;
 paperclip_price  = 1;
 marketing        = 1;
+marketing_price  = 200;
 
 // Cosas de la fábrica
 wire                    = 90;
@@ -50,17 +51,19 @@ var ui_element_average_clips;
 // Bucle principal, más o menos
 setTimeout( function(){
 
-    ui_element_ammount_paperclips   = document.getElementById('ammount-paperclips');
+    ui_element_ammount_paperclips   = document.getElementById('paperclips-ammount');
+    ui_element_paperclip_price      = document.getElementById('paperclip-price');
+    ui_element_average_clips        = document.getElementById('paperclip-average');
     ui_element_available_funds      = document.getElementById('available-funds');
     ui_element_unsold_inventory     = document.getElementById('unsold-inventory');
-    ui_element_paperclip_price      = document.getElementById('paperclip-price');
 
-    ui_element_ammount_wire         = document.getElementById('ammount-wire');
-    ui_element_price_wire           = document.getElementById('cost-wire');
-    ui_element_ammount_autoclippers = document.getElementById('ammount-autoclippers');
-    ui_element_price_autoclippers   = document.getElementById('cost-autoclippers');
+    ui_element_ammount_wire         = document.getElementById('wire-ammount');
+    ui_element_price_wire           = document.getElementById('wire-cost');
+    ui_element_ammount_autoclippers = document.getElementById('autoclippers-ammount');
+    ui_element_price_autoclippers   = document.getElementById('autoclippers-cost');
 
-    ui_element_average_clips        = document.getElementById('paperclip-average');
+    ui_element_ammount_marketing    = document.getElementById('marketing-ammount');
+    ui_element_price_marketing      = document.getElementById('marketing-price');
 
     setInterval(function() { update_ui(); }, 50);
 }, 100);
@@ -115,6 +118,15 @@ function buy_wire() {
     // factory_autoclippers
 }
 
+function buy_marketing() {
+    if (euros >= marketing_price) {
+        marketing++;
+        euros -= marketing_price;
+        euros = Math.round( euros * 10 ) / 10;
+        marketing_price = price_linear(marketing, 200, 450);
+    }
+}
+
 function buy_upgrade(price, upgrade_function) {
     if (euros >= price) {
         euros -= price;
@@ -162,9 +174,12 @@ function update_ui() {
     ui_element_paperclip_price.innerHTML    = "Paperclip price : " + paperclip_price + "€";
 
     ui_element_ammount_wire.innerHTML         = "" + wire + " m";
-    ui_element_price_wire.innerHTML           = "Price : " + wire_price;
+    ui_element_price_wire.innerHTML           = wire_price+ "€";
     ui_element_ammount_autoclippers.innerHTML = "Autoclippers : " + autoclippers;
-    ui_element_price_autoclippers.innerHTML   = "Price : " + autoclippers_price + "€";
+    ui_element_price_autoclippers.innerHTML   = autoclippers_price + "€";
 
-    ui_element_average_clips                  = "Average clips : " + autoclippers;
+    ui_element_average_clips.innerHTML        = "Average clips : " + autoclippers;
+
+    ui_element_ammount_marketing.innerHTML    = "Level : " + marketing;
+    ui_element_price_marketing.innerHTML      =  marketing_price+ "€";
 }

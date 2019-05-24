@@ -4,6 +4,9 @@
         <meta charset="utf-8">
         <title></title>
         <style media="screen">
+            /* html, body {
+                height: 100%;
+            } */
             hr {
                 margin-top: 0px;
             }
@@ -11,10 +14,28 @@
                 margin-bottom: 0px;
             }
             .column {
-                width: 320px;
+                width: 350px;
                 float: left;
                 margin-right: 5px;
             }
+            .event {
+                color:#dddddd;
+                 /* margin-bottom: auto; */
+                 font-family: consolas;
+            }
+            .console {
+                background-color: #383838;
+
+                display: flex;
+                flex-direction: column-reverse;
+
+                width: 350px;
+                float: right;
+                /* height: 80%; */
+                height: 600px;
+                /* margin-right: 5px; */
+            }
+
             .project {
                 background-color: #a7a7a7;
                 padding: 20px;
@@ -28,7 +49,7 @@
     </head>
     <body>
         <!-- Paperclips : 99999 -->
-        <h1 id="ammount-paperclips">Paperclips : 0</h1>
+        <h1 id="paperclips-ammount">Paperclips : 0</h1>
         <!-- <button type="button" name="button">Make paperclip</button> -->
 
         <div class="column">
@@ -45,11 +66,14 @@
             <button type="button" onclick="paperclip_price_increase()">Raise price</button>
             <button type="button" onclick="paperclip_price_lower()">Lower price</button>
             <span id="paperclip-price">Paperclip price</span> <br>
-            Public demand : 100% <br>
+            <span id="public-demand">Public demand : 100%</span> <br>
             <br>
-            <button type="button" name="button">Marketing</button>
-            Level : 10 <br>
-            Cost : 200$ <br>
+            <button type="button" onclick="buy_marketing()">Marketing</button>
+            <span id="marketing-ammount">Level : 0</span> <br>
+            <span id="marketing-price">Price : 999</span> <br>
+
+            <!-- Level : 10 <br>
+            Cost : 200$ <br> -->
 
 
 
@@ -60,8 +84,8 @@
 
             <br>
             <button type="button" onclick="buy_wire()">Wire</button>
-            <span id="ammount-wire">100 m</span> <br>
-            <span id="cost-wire">3 €</span> <br>
+            <span id="wire-ammount">100 m</span> <br>
+            <span id="wire-cost">3 €</span> <br>
             <!-- 99999 cm <br> -->
             <!-- Cost : 9999 <br> -->
             <br>
@@ -69,12 +93,12 @@
             <button type="button" onclick="buy_autoclipper()">Autoclipers</button>
             <!-- 99999 cm <br>
             Cost : 9999 <br> -->
-            <span id="ammount-autoclippers">4</span> <br>
-            <span id="cost-autoclippers">3 €</span> <br>
+            <span id="autoclippers-ammount">4</span> <br>
+            <span id="autoclippers-cost">3 €</span> <br>
 
         </div>
         <div class="column">
-            adads
+            <!-- adads -->
             <h2>Computational resources</h2>
             <hr>
             trust : 11 <br>
@@ -120,5 +144,22 @@
 
 
         </div>
+
+        <div class="console">
+            <span class="event">evento 0</span>
+            <span class="event">evento 0</span>
+            <span class="event">evento 0</span>
+            <span class="event">evento 0</span>
+            <span class="event">evento 0</span>
+            <span class="event">evento 0</span>
+            <span class="event">asdadad</span>
+            <span class="event">asdadad</span>
+            <span class="event">cosas asdnasd oa dkja dsfd</span>
+            <span class="event">asdd gfd fdgadad</span>
+            <span class="event">asdadf df fdg df df dfgdad</span>
+            <span class="event">asdaadadad asd sdf s df gddad</span>
+            <span class="event">asdadad</span>
+        </div>
+
     </body>
 </html>
